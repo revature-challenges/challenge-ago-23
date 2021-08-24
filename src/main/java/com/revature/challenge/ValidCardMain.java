@@ -73,11 +73,6 @@ public class ValidCardMain {
                 }
                 oddPos++;
             }
-//            System.out.println("sum = " + sum);
-//            System.out.println("Last digit of sum ("+sum+") >> "+Character.getNumericValue(String.valueOf(sum).charAt(String.valueOf(sum).length()-1)));
-//            System.out.println("10 - "+ +Character.getNumericValue(String.valueOf(sum).charAt(String.valueOf(sum).length()-1))+" = "+(10-Character.getNumericValue(String.valueOf(sum).charAt(String.valueOf(sum).length()-1))));
-//            System.out.println("Compare the result against the last digit if both are equal the number is a valid number!!!");
-//            System.out.println("Last digit >>> "+Character.getNumericValue(lastDigit));
             
             //This is the part that differed for the Lunh Algorithm in both cases
             if((10-Character.getNumericValue(String.valueOf(sum).charAt(String.valueOf(sum).length()-1)))==Character.getNumericValue(lastDigit)){
@@ -110,11 +105,6 @@ public class ValidCardMain {
                 }
                 oddPos++;
             }
-//            System.out.println("sum = " + sum);
-//            System.out.println("Mod 10 of "+sum+ " = "+sum%10);
-//            System.out.println("Compare the result against the last digit if both are equal the number is a valid number!!!");
-//            System.out.println("Last digit >>> "+Character.getNumericValue(lastDigit));
-            
             
             //This is the part that differed for the Lunh Algorithm in both cases
             if(sum%10==Character.getNumericValue(lastDigit)){return true;};
