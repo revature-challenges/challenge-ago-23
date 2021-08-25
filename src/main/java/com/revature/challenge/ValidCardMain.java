@@ -54,27 +54,8 @@ public class ValidCardMain {
         StringBuilder cardNum = new StringBuilder(cardNumber.trim());
         if(cardNum.length() >=14 && cardNum.length() <=19){
             char lastDigit= cardNum.charAt(cardNum.length()-1);
-            StringBuilder supportStr = new StringBuilder(cardNum.substring(0, cardNum.length() - 1));
-            supportStr.reverse();
-            int sum=0;
-            int oddPos = 1;
-            for(char c: String.valueOf(supportStr).toCharArray()){
-                if(oddPos % 2 != 0) {
-                    int oddNum =  Character.getNumericValue(c) * 2;
-                    if (oddNum >= 10){
-                        oddNum -= 9;
-                        sum += oddNum;
-                    }else{
-                        sum += oddNum;
-                    }
-                }else{
-                    sum += Character.getNumericValue(c);
-                    oddPos=0;
-                }
-                oddPos++;
-            }
-            
             //This is the part that differed for the Lunh Algorithm in both cases
+            int sum = completeLunhSum(cardNumber);
             if((10-Character.getNumericValue(String.valueOf(sum).charAt(String.valueOf(sum).length()-1)))==Character.getNumericValue(lastDigit)){
                 return true;
             };
@@ -86,30 +67,33 @@ public class ValidCardMain {
         StringBuilder cardNum = new StringBuilder(cardNumber.trim());
         if(cardNum.length() >=14 && cardNum.length() <=19){
             char lastDigit= cardNum.charAt(cardNum.length()-1);
-            StringBuilder supportStr = new StringBuilder(cardNum.substring(0, cardNum.length() - 1));
-            supportStr.reverse();
-            int sum=0;
-            int oddPos = 1;
-            for(char c: String.valueOf(supportStr).toCharArray()){
-                if(oddPos % 2 != 0) {
-                    int oddNum =  Character.getNumericValue(c) * 2;
-                    if (oddNum >= 10){
-                        oddNum -= 9;
-                        sum += oddNum;
-                    }else{
-                        sum += oddNum;
-                    }
-                }else{
-                    sum += Character.getNumericValue(c);
-                    oddPos=0;
-                }
-                oddPos++;
-            }
-            
             //This is the part that differed for the Lunh Algorithm in both cases
-            if(sum%10==Character.getNumericValue(lastDigit)){return true;};
+            if(completeLunhSum(cardNumber)%10==Character.getNumericValue(lastDigit)){return true;};
         }
         return false;
+    }
+    
+    private static int completeLunhSum(String cardNum){
+        StringBuilder supportStr = new StringBuilder(cardNum.substring(0, cardNum.length() - 1));
+        supportStr.reverse();
+        int sum=0;
+        int oddPos = 1;
+        for(char c: String.valueOf(supportStr).toCharArray()){
+            if(oddPos % 2 != 0) {
+                int oddNum =  Character.getNumericValue(c) * 2;
+                if (oddNum >= 10){
+                    oddNum -= 9;
+                    sum += oddNum;
+                }else{
+                    sum += oddNum;
+                }
+            }else{
+                sum += Character.getNumericValue(c);
+                oddPos=0;
+            }
+            oddPos++;
+        }
+        return sum;
     }
   
 
